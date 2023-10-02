@@ -1,11 +1,12 @@
-// Import the required mongoose library for MongoDB interactions
-const mongoose = require('mongoose');
-
 // Load environment variables from a .env file (dotenv package)
 require('dotenv').config();
 
+// Import the required mongoose library for MongoDB interactions
+const mongoose = require('mongoose');
+
+
 // Retrieve the MongoDB connection URI from environment variables
-const mongoURI = process.env.MONGODB_URI;
+const mongoURI = `mongodb+srv://${process.env.REACT_APP_MONGODB_USERNAME}:${process.env.REACT_APP_MONGODB_PASSWORD}@cluster0.szqlglv.mongodb.net/mylearningbuddy`;
 
 // Function to connect to the MongoDB database
 const connectDB = async () => {

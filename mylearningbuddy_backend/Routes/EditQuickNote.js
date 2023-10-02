@@ -1,3 +1,12 @@
+const express = require('express');
+
+const router = express.Router();
+const jwt = require('jsonwebtoken'); // Import the 'jsonwebtoken' library
+const User = require('../models/User');
+const QuickNote = require('../models/QuickNotes'); // Import the QuickNotes model
+
+
+
 // PUT endpoint to edit a Quick Note by ID
 router.put("/edit-quicknote/:id", async (req, res) => {
         const { quicknote, quicknoteTag, quicknoteCreatedDate } = req.body;
@@ -29,3 +38,4 @@ router.put("/edit-quicknote/:id", async (req, res) => {
         }
      });
      
+     module.exports = router;

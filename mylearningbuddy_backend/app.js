@@ -1,3 +1,6 @@
+// Load environment variables from a .env file (dotenv package)
+require('dotenv').config();
+
 // Import necessary modules
 const express = require("express");
 const app = express();
@@ -21,16 +24,33 @@ app.get("/", (req, res) => {
     res.send('Your app is added with a backend now');
 })
 
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
+});
+
+
 // Use various routes for your API
 app.use("/api", require("./Routes/Createuser"));
 app.use("/api", require("./Routes/Authuser"));
+
 app.use("/api", require("./Routes/AddNotebook"));
 app.use("/api", require("./Routes/DeleteNotebook"));
+app.use("/api", require("./Routes/EditNotebook"));
+
 app.use("/api", require("./Routes/Addchapter"));
 app.use("/api", require("./Routes/DeleteChapter"));
+app.use("/api", require("./Routes/EditChapter"));
+
 app.use("/api", require("./Routes/AddContents"));
 app.use("/api", require("./Routes/DeleteContents"));
+app.use("/api", require("./Routes/EditContents"));
+
+
 app.use("/api", require("./Routes/AddQuickNotes"));
+app.use("/api", require("./Routes/DeleteQuickNote"));
+app.use("/api", require("./Routes/EditQuickNote"));
+
 
 // Start the server and listen on the specified port
 app.listen(PORT, () => {

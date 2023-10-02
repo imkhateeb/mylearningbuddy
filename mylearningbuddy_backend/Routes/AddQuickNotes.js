@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken'); // Import the 'jsonwebtoken' library
 const User = require('../models/User');
-const QuickNote = require('../models/QuickNote'); // Import the QuickNote model
+const QuickNote = require('../models/QuickNotes'); // Import the QuickNote model
 
 // POST endpoint to add a new Quick Note
 router.post("/add-quicknotes/:authToken", async (req, res) => {
